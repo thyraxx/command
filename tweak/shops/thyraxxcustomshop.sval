@@ -1,22 +1,22 @@
 <loader>Upgrades::LoadShop</loader>
 <dict>
-	<string name="class">Upgrades::MyDungeonShop</string>
+	<string name="class">Upgrades::ThyraxxItemPickerShop</string>
 
-	<string name="id">dungeonstore</string>
-	<string name="name">.shop.dungeonstore</string>
+	<string name="id">thyraxxcustomshop</string>
+	<string name="name">.shop.thyraxxcustomshop</string>
 	<bool name="stars-visible">false</bool>
 
 	<!-- Item types -->
 	<array name="items">
 		<!-- Level 1 -->
 		<dict>
-			<float name="cost-scale">0.0001</float>
-			<array name="qualities">
-<!-- 				<string>common</string>
+			<float name="cost-scale">1.5</float>
+			<array name="qualities"><!--
 				<string>common</string>
 				<string>common</string>
 				<string>common</string>
-				<string>common</string> -->
+				<string>common</string>
+				<string>common</string> !-->
 			</array>
 			<int name="max-items">3</int>
 		</dict>
@@ -38,11 +38,11 @@
 		<dict>
 			<float name="cost-scale">2</float>
 			<array name="qualities">
-			<!-- 	<string>common</string>
+				<string>common</string>
 				<string>common</string>
 				<string>common</string>
 				<string>uncommon</string>
-				<string>uncommon</string> -->
+				<string>uncommon</string>
 			</array>
 			<int name="max-items">3</int>
 		</dict>
@@ -51,11 +51,11 @@
 		<dict>
 			<float name="cost-scale">2.75</float>
 			<array name="qualities">
-				<!-- <string>common</string>
+				<string>common</string>
 				<string>common</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
-				<string>rare</string> -->
+				<string>rare</string>
 			</array>
 			<int name="max-items">3</int>
 		</dict>
@@ -64,11 +64,25 @@
 		<dict>
 			<float name="cost-scale">3.5</float>
 			<array name="qualities">
-				<!-- <string>uncommon</string>
+				<string>uncommon</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
 				<string>rare</string>
-				<string>rare</string> -->
+				<string>rare</string>
+			</array>
+			<int name="max-items">3</int>
+		</dict>
+
+		<!-- Level 6 -->
+		<dict>
+			<float name="cost-scale">3.5</float>
+			<array name="qualities">
+				<string>uncommon</string>
+				<string>uncommon</string>
+				<string>uncommon</string>
+				<string>uncommon</string>
+				<string>rare</string>
+				<string>rare</string>
 			</array>
 			<int name="max-items">3</int>
 		</dict>

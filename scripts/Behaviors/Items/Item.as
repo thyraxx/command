@@ -21,7 +21,7 @@ class Item : IUsable
 
 		@m_item = item;
 		
-		ScriptSprite@ sprite = m_item.icon;
+		ScriptSprite@ sprite = m_item.iconScene;
 		
 		array<vec4> frames;
 		array<int> frameTimes = { 100 };
@@ -30,10 +30,15 @@ class Item : IUsable
 			frames.insertLast(sprite.m_frames[i].frame);
 		
 		Material@ mat = GetQualityMaterial(item.quality);
+
+		vec2 halfSize = vec2(
+			sprite.GetWidth() / 2,
+			sprite.GetHeight() / 2
+		);
 		
 		CustomUnitScene unitScene;
 		unitScene.AddScene(m_unit.GetUnitScene("shared"), 0, vec2(), 0, 0);
-		unitScene.AddSprite(CustomUnitSprite(vec2(6, 6), sprite.m_texture, mat, frames, frameTimes, true, 0), 0, vec2(), 0, 0);
+		unitScene.AddSprite(CustomUnitSprite(halfSize, sprite.m_texture, mat, frames, frameTimes, true, 0), 0, vec2(), 0, 0);
 		
 		m_unit.SetUnitScene(unitScene, false);
 	}
@@ -95,10 +100,7 @@ class Item : IUsable
 
 	void Use(PlayerBase@ player)
 	{
-		
-		
-		//m_unit.Destroy();
-		print(m_item.name);
+		// m_unit.Destroy();
 		GiveItemImpl(m_item, player, true);
 	}
 
@@ -116,20 +118,22 @@ class Item : IUsable
 
 void GiveItemImpl(ActorItem@ item, PlayerBase@ player, bool showFloatingText)
 {
-	auto record = GetLocalPlayerRecord();
-	record.generalStoreItemsBought = 0;
-
 	auto gm = cast<Campaign>(g_gameMode);
+	// print("-----------------> " + gm.m_shopMenu);
+	// gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 1);
+
+	// auto gm = cast<Campaign>(g_gameMode);
 	if (item.quality == ActorItemQuality::Common)
-		gm.m_shopMenu.Show(DungeonStoreMenuContent(gm.m_shopMenu), 1);
+		gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 1);
 	else if (item.quality == ActorItemQuality::Uncommon)
-		gm.m_shopMenu.Show(DungeonStoreMenuContent(gm.m_shopMenu), 1);
-	else if (item.quality == ActorItemQuality::Rare)
-		gm.m_shopMenu.Show(DungeonStoreMenuContent(gm.m_shopMenu), 1);
-	else if (item.quality == ActorItemQuality::Epic)
-		gm.m_shopMenu.Show(DungeonStoreMenuContent(gm.m_shopMenu), 1);
-	else if (item.quality == ActorItemQuality::Legendary)
-		gm.m_shopMenu.Show(DungeonStoreMenuContent(gm.m_shopMenu), 1);
+		gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 2);
+	// else if (item.quality == ActorItemQuality::Rare)
+	// 	gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 1);
+	// else if (item.quality == ActorItemQuality::Epic)
+	// 	gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 1);
+	// else if (item.quality == ActorItemQuality::Legendary)
+	// 	gm.m_shopMenu.Show(ThyraxxShopMenuContent(gm.m_shopMenu), 1);
+
 
 	// player.AddItem(item);
 
@@ -160,4 +164,6 @@ void GiveItemImpl(ActorItem@ item, PlayerBase@ player, bool showFloatingText)
 	// 	else if (item.quality == ActorItemQuality::Legendary)
 	// 		PlaySound3D(Resources::GetSoundEvent("event:/item/item_legendary"), pos);
 	// }
+
+
 }
