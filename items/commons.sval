@@ -1,0 +1,19 @@
+<loader>AddItemFile</loader>
+<dict>
+
+  <dict name="item-picker">
+      <string name="name">.item.pick-an-item.name</string>
+      <string name="desc">.item.pick-an-item.desc</string>
+      <string name="quality">common</string>
+      <int name="cost">1</int>
+
+      <bool name="buy-in-dungeon">false</bool>
+      <bool name="has-blueprints">false</bool>
+
+      <array name="icon">
+        <string>items/asd.png</string>
+        <int>100</int><vec4>0 0 16 16</vec4>
+      </array>
+    </dict>
+
+</dict>

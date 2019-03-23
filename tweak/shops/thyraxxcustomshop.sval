@@ -10,7 +10,7 @@
 	<array name="items">
 		<!-- Level 1 -->
 		<dict>
-			<float name="cost-scale">1.5</float>
+			<float name="cost-scale">0.0</float>
 			<array name="qualities"><!--
 				<string>common</string>
 				<string>common</string>

@@ -2,13 +2,13 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 {
 
 	Widget@ m_wTemplate;
-	Upgrades::DungeonShop@ m_itemShop;
+	Upgrades::ThyraxxItemPickerShop@ m_itemShop;
 
 	ThyraxxShopMenuContent(ShopMenu@ shopMenu, string id = "thyraxxcustomshop")
 	{
 		super(shopMenu, id);
 
-		@m_itemShop = cast<Upgrades::DungeonShop>(m_currentShop);
+		@m_itemShop = cast<Upgrades::ThyraxxItemPickerShop>(m_currentShop);
 		if (m_itemShop is null)
 			PrintError("\"" + id + "\" is not a dungeon shop!");
 	}
@@ -31,24 +31,25 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		ReloadList();
 	}
 
-	// bool BuyItem(Upgrades::Upgrade@ upgrade, Upgrades::UpgradeStep@ step) override
-	// {
-	// 	if (UpgradeShopMenuContent::BuyItem(upgrade, step))
-	// 	{
-	// 		auto record = GetLocalPlayerRecord();
-	// 		if (cast<Upgrades::ItemUpgrade>(upgrade) !is null){
-	// 			record.generalStoreItemsBought++;
-	// 		}
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
+	bool BuyItem(Upgrades::Upgrade@ upgrade, Upgrades::UpgradeStep@ step) override
+	{
+		if (UpgradeShopMenuContent::BuyItem(upgrade, step))
+		{
+			auto record = GetLocalPlayerRecord();
+			if (cast<Upgrades::ItemUpgrade>(upgrade) !is null){
+				record.generalStoreItemsBought++;
+			}
+			return true;
+		}
+		return false;
+	}
 
 	Widget@ AddItem(Widget@ template, Widget@ list, Upgrades::Upgrade@ upgrade) override
 	{
 		auto wNewItem = UpgradeShopMenuContent::AddItem(template, list, upgrade);
 
 		auto itemUpgrade = cast<Upgrades::ItemUpgrade>(upgrade);
+		// print(itemUpgrade.m_item.id);
 		if (itemUpgrade !is null)
 		{
 			auto wIconContainer = cast<RectWidget>(wNewItem.GetWidgetById("icon-container"));
@@ -75,8 +76,9 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		else
 		{
 			auto wButton = cast<UpgradeShopButtonWidget>(wNewItem);
-			if (wButton !is null)
+			if (wButton !is null){
 				wButton.m_enabled = wButton.m_enabled && !upgrade.IsOwned(GetLocalPlayerRecord());
+			}
 		}
 		return wNewItem;
 	}

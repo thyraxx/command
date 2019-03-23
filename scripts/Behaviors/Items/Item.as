@@ -101,6 +101,12 @@ class Item : IUsable
 	void Use(PlayerBase@ player)
 	{
 		// m_unit.Destroy();
+
+		// print(m_item.id);
+
+		// GiveItemImpl(m_item, player, true);
+		m_item.id = "item-picker";
+		print(m_item.id);
 		GiveItemImpl(m_item, player, true);
 	}
 
