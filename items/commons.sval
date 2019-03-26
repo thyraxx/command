@@ -8,6 +8,7 @@
       <int name="cost">1</int>
 
       <bool name="buy-in-dungeon">false</bool>
+      <bool name="buy-in-town">false</bool>
       <bool name="has-blueprints">false</bool>
 
       <array name="icon">

@@ -20,7 +20,7 @@ class Item : IUsable
 			return;
 
 		@m_item = item;
-		
+
 		ScriptSprite@ sprite = m_item.iconScene;
 		
 		array<vec4> frames;
@@ -103,9 +103,10 @@ class Item : IUsable
 		// m_unit.Destroy();
 
 		// print(m_item.id);
+		
+		// m_item.id = "item-picker";
+		// m_item.idHash = -10920972;
 
-		// GiveItemImpl(m_item, player, true);
-		m_item.id = "item-picker";
 		print(m_item.id);
 		GiveItemImpl(m_item, player, true);
 	}

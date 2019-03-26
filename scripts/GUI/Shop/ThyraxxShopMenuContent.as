@@ -49,7 +49,6 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		auto wNewItem = UpgradeShopMenuContent::AddItem(template, list, upgrade);
 
 		auto itemUpgrade = cast<Upgrades::ItemUpgrade>(upgrade);
-		// print(itemUpgrade.m_item.id);
 		if (itemUpgrade !is null)
 		{
 			auto wIconContainer = cast<RectWidget>(wNewItem.GetWidgetById("icon-container"));
