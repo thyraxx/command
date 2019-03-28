@@ -10,8 +10,31 @@ class Item : IUsable
 
 		bool specific = GetParamBool(unit, params, "specific", false, false);
 
-		if (!specific)
-			Initialize(g_items.TakeRandomItem(quality));
+		if (!specific){
+			auto itemPicker = "";
+			
+			if(quality == 1){
+				Initialize(g_items.GetItem("item-picker-common"));
+			}
+
+			if(quality == 2){
+				Initialize(g_items.GetItem("item-picker-uncommon"));
+			}
+
+			if(quality == 3){
+				Initialize(g_items.GetItem("item-picker-rare"));
+			}
+
+			if(quality == 4){
+				Initialize(g_items.GetItem("item-picker-epic"));
+			}
+
+			if(quality == 5){
+				Initialize(g_items.GetItem("item-picker-legendary"));
+			}
+
+			// Initialize(g_items.GetItem(itemPicker));
+		}
 	}
 	
 	void Initialize(ActorItem@ item)

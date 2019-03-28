@@ -18,6 +18,11 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		return "gui/shop/thyraxxcustomshop.gui";
 	}
 
+	bool ShouldShowStars() override
+	{
+		return false;
+	}
+
 	void OnShow() override
 	{
 		@m_wItemTemplate = m_widget.GetWidgetById("buy-template");
@@ -29,6 +34,49 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		@m_wSoldOut = m_widget.GetWidgetById("sold-out");
 
 		ReloadList();
+	}
+
+	void ReloadList() override
+	{
+		ClearList(m_wItemList);
+		ClearList(m_wItemListSmall);
+
+		m_shopMenu.CloseTooltip();
+
+		m_wItemListSmallContainer.m_visible = false;
+
+		if (m_currentShop is null)
+			return;
+
+		auto record = GetLocalPlayerRecord();
+
+		m_currentShop.OnOpenMenu(m_shopMenu.m_currentShopLevel, record);
+
+		int numItems = 0;
+		for (auto iter = m_currentShop.Iterate(m_shopMenu.m_currentShopLevel, record); !iter.AtEnd(); iter.Next())
+		{
+			Widget@ btn = null;
+
+			auto upgrade = iter.Current();
+			// print(upgrade.id);
+			if (upgrade.m_small)
+			{
+				@btn = AddItem(m_wItemTemplateSmall, m_wItemListSmall, upgrade);
+				m_wItemListSmallContainer.m_visible = true;
+			}
+			else
+				@btn = AddItem(m_wItemTemplate, m_wItemList, upgrade);
+
+			if (btn.m_visible)
+				numItems++;
+		}
+
+		m_wSoldOut.m_visible = (numItems == 0);
+
+		m_shopMenu.DoLayout();
+		m_shopMenu.DoLayout();
+
+		m_shopMenu.m_forceFocus = true;
 	}
 
 	bool BuyItem(Upgrades::Upgrade@ upgrade, Upgrades::UpgradeStep@ step) override
