@@ -1,7 +1,7 @@
 ﻿<lang>
-	<string name="shop.thyraxxcustomshop">Item Picker</string>
-	
-	<!-- Placeholder stuff -->
+	<string name="shop.itempickershop">Item Picker</string>
+
+	<!-- Item Picker -->
 	<string name="item.pick-an-item.name">Pick an item!</string>
 	<string name="item.pick-an-item.desc">... you need me to explain this?</string>
 </lang>

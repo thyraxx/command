@@ -1,21 +1,21 @@
-class ThyraxxShopMenuContent : UpgradeShopMenuContent
+class ItemPickerShopMenuContent : UpgradeShopMenuContent
 {
 
 	Widget@ m_wTemplate;
-	Upgrades::ThyraxxItemPickerShop@ m_itemShop;
+	Upgrades::ItemPickerShop@ m_itemShop;
 
-	ThyraxxShopMenuContent(ShopMenu@ shopMenu, string id = "thyraxxcustomshop")
+	ItemPickerShopMenuContent(ShopMenu@ shopMenu, string id = "itempickershop")
 	{
 		super(shopMenu, id);
 
-		@m_itemShop = cast<Upgrades::ThyraxxItemPickerShop>(m_currentShop);
+		@m_itemShop = cast<Upgrades::ItemPickerShop>(m_currentShop);
 		if (m_itemShop is null)
 			PrintError("\"" + id + "\" is not a dungeon shop!");
 	}
 
 	string GetGuiFilename() override
 	{
-		return "gui/shop/thyraxxcustomshop.gui";
+		return "gui/shop/itempickershop.gui";
 	}
 
 	bool ShouldShowStars() override
@@ -54,11 +54,11 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 
 		int numItems = 0;
 		for (auto iter = m_currentShop.Iterate(m_shopMenu.m_currentShopLevel, record); !iter.AtEnd(); iter.Next())
+		// for(uint i = 0; i < items.length(); i++)
 		{
 			Widget@ btn = null;
 
 			auto upgrade = iter.Current();
-			// print(upgrade.id);
 			if (upgrade.m_small)
 			{
 				@btn = AddItem(m_wItemTemplateSmall, m_wItemListSmall, upgrade);
@@ -79,14 +79,12 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 		m_shopMenu.m_forceFocus = true;
 	}
 
+
 	bool BuyItem(Upgrades::Upgrade@ upgrade, Upgrades::UpgradeStep@ step) override
 	{
 		if (UpgradeShopMenuContent::BuyItem(upgrade, step))
 		{
-			auto record = GetLocalPlayerRecord();
-			if (cast<Upgrades::ItemUpgrade>(upgrade) !is null){
-				record.generalStoreItemsBought++;
-			}
+			m_shopMenu.Close();
 			return true;
 		}
 		return false;
@@ -114,6 +112,8 @@ class ThyraxxShopMenuContent : UpgradeShopMenuContent
 				wIcon.Set(itemUpgrade.m_step);
 
 			auto wButton = cast<UpgradeShopButtonWidget>(wNewItem.GetWidgetById("button"));
+			wButton.m_enabled = true;
+
 			if (wButton !is null && wButton.m_enabled)
 			{
 				auto record = GetLocalPlayerRecord();

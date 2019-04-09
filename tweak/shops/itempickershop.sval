@@ -1,16 +1,16 @@
 <loader>Upgrades::LoadShop</loader>
 <dict>
-	<string name="class">Upgrades::ThyraxxItemPickerShop</string>
+	<string name="class">Upgrades::ItemPickerShop</string>
 
-	<string name="id">thyraxxcustomshop</string>
-	<string name="name">.shop.thyraxxcustomshop</string>
+	<string name="id">itempickershop</string>
+	<string name="name">.shop.itempickershop</string>
 	<bool name="stars-visible">false</bool>
 
 	<!-- Item types -->
 	<array name="items">
 		<!-- Level 1 -->
 		<dict>
-			<float name="cost-scale">0.0</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities"><!--
 				<string>common</string>
 				<string>common</string>
@@ -23,7 +23,7 @@
 
 		<!-- Level 2 -->
 		<dict>
-			<float name="cost-scale">0.0</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities">
 				<!-- <string>common</string>
 				<string>common</string>
@@ -36,53 +36,53 @@
 
 		<!-- Level 3 -->
 		<dict>
-			<float name="cost-scale">2</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities">
-				<string>common</string>
+				<!-- <string>common</string>
 				<string>common</string>
 				<string>common</string>
 				<string>uncommon</string>
-				<string>uncommon</string>
+				<string>uncommon</string> -->
 			</array>
 			<int name="max-items">3</int>
 		</dict>
 
 		<!-- Level 4 -->
 		<dict>
-			<float name="cost-scale">2.75</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities">
-				<string>common</string>
+				<!-- <string>common</string>
 				<string>common</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
-				<string>rare</string>
+				<string>rare</string> -->
 			</array>
 			<int name="max-items">3</int>
 		</dict>
 
 		<!-- Level 5 -->
 		<dict>
-			<float name="cost-scale">3.5</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities">
-				<string>uncommon</string>
+				<!-- <string>uncommon</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
 				<string>rare</string>
-				<string>rare</string>
+				<string>rare</string> -->
 			</array>
 			<int name="max-items">3</int>
 		</dict>
 
 		<!-- Level 6 -->
 		<dict>
-			<float name="cost-scale">3.5</float>
+			<float name="cost-scale">0</float>
 			<array name="qualities">
-				<string>uncommon</string>
+				<!-- <string>uncommon</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
 				<string>uncommon</string>
 				<string>rare</string>
-				<string>rare</string>
+				<string>rare</string> -->
 			</array>
 			<int name="max-items">3</int>
 		</dict>

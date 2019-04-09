@@ -2,8 +2,8 @@
 <dict>
 
   <dict name="item-picker-common">
-    <string name="name">.item.pick-an-item.name</string>
-    <string name="desc">.item.pick-an-item.desc</string>
+    <string name="name">.item.pick-an-items.name</string>
+    <string name="desc">.item.pick-an-items.desc</string>
     <string name="quality">common</string>
     <int name="cost">1</int>
 
@@ -12,7 +12,7 @@
     <bool name="has-blueprints">false</bool>
 
     <array name="icon">
-      <string>items/asd.png</string>
+      <string>items/holidaychests.png</string>
       <int>100</int><vec4>0 0 16 16</vec4>
     </array>
   </dict>
@@ -28,8 +28,8 @@
     <bool name="has-blueprints">false</bool>
 
     <array name="icon">
-      <string>items/asd.png</string>
-      <int>100</int><vec4>0 0 16 16</vec4>
+      <string>items/holidaychests.png</string>
+      <int>100</int><vec4>16 0 16 16</vec4>
     </array>
   </dict>
 
@@ -44,8 +44,8 @@
     <bool name="has-blueprints">false</bool>
 
     <array name="icon">
-      <string>items/asd.png</string>
-      <int>100</int><vec4>0 0 16 16</vec4>
+      <string>items/holidaychests.png</string>
+      <int>100</int><vec4>32 0 16 16</vec4>
     </array>
   </dict>
 
@@ -60,8 +60,8 @@
     <bool name="has-blueprints">false</bool>
 
     <array name="icon">
-      <string>items/asd.png</string>
-      <int>100</int><vec4>0 0 16 16</vec4>
+      <string>items/holidaychests.png</string>
+      <int>100</int><vec4>48 0 16 16</vec4>
     </array>
   </dict>
 
@@ -76,8 +76,8 @@
     <bool name="has-blueprints">false</bool>
 
     <array name="icon">
-      <string>items/asd.png</string>
-      <int>100</int><vec4>0 0 16 16</vec4>
+      <string>items/holidaychests.png</string>
+      <int>100</int><vec4>64 0 16 16</vec4>
     </array>
   </dict>
 </dict>

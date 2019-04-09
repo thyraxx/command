@@ -23,8 +23,8 @@
 			<!-- Big buy template -->
 			<rect id="buy-template" visible="false" width="270" height="22" flow="hbox">
 				<!-- Icon -->
-				<rect id="icon-container" width="24" height="24" spriteset="gui/variable/bigwindow_borders.sval" color="#202a26FF" shadow="#000000af" shadowsize="4">
-					<upgradeicon id="icon" width="12" height="12" offset="6 6" />
+				<rect id="icon-container" width="22" height="22" spriteset="gui/variable/bigwindow_borders.sval" color="#202a26FF" shadow="#000000af" shadowsize="4">
+					<upgradeicon id="icon" width="12" height="12" offset="5 5" />
 				</rect>
 
 				<!-- Button -->
