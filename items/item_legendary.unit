@@ -1,0 +1,28 @@
+<unit slot="item" netsync="none">
+	<behavior class="Item">
+		<string name="quality">legendary</string>
+		<bool name="specific">true</bool>
+	</behavior>
+
+	<scenes start="item">
+		<scene name="hidden">
+			<collision static="true">
+				<circle sensor="true" offset="0 0" radius="7" />
+			</collision>
+		</scene>
+		
+		<scene name="shared">
+			<minimap_sprite layer="10" origin="4 4" texture="gui/minimap.png" frame="67 20 9 9" />
+			<collision static="true">
+				<circle sensor="true" offset="0 0" radius="7" />
+			</collision>
+		</scene>
+
+		<scene name="item">
+			<scene src="shared" />
+			<sprite origin="7 13" looping="true" texture="items/items.png" material="system/default.mats:item">
+				<frame>0 0 13 13</frame>
+			</sprite>
+		</scene>
+	</scenes>
+</unit>

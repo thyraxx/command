@@ -1,9 +1,8 @@
 <loader>AddItemFile</loader>
 <dict>
-
   <dict name="item-picker-common">
-    <string name="name">.item.pick-an-items.name</string>
-    <string name="desc">.item.pick-an-items.desc</string>
+    <string name="name">.item.pick-an-item.name</string>
+    <string name="desc">.item.pick-an-item.desc</string>
     <string name="quality">common</string>
     <int name="cost">1</int>
 

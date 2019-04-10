@@ -42,7 +42,6 @@ namespace Upgrades
 		void NewItems(SValue@ sv, PlayerRecord@ record) override
 		{
 			auto itemList = g_items.m_allItemsList;
-
 			record.generalStoreItems.removeRange(0, record.generalStoreItems.length());
 			m_upgrades.removeRange(0, m_upgrades.length());
 			

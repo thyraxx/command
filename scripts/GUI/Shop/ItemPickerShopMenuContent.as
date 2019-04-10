@@ -112,12 +112,12 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 				wIcon.Set(itemUpgrade.m_step);
 
 			auto wButton = cast<UpgradeShopButtonWidget>(wNewItem.GetWidgetById("button"));
-			wButton.m_enabled = true;
+			// wButton.m_enabled = true;
 
-			if (wButton !is null && wButton.m_enabled)
+			if (wButton !is null)
 			{
 				auto record = GetLocalPlayerRecord();
-				wButton.m_enabled = wButton.m_enabled && (record.generalStoreItemsBought < m_itemShop.m_maxItems);
+				wButton.m_enabled = true;
 			}
 		}
 		else
