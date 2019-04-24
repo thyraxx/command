@@ -10,7 +10,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 
 		@m_itemShop = cast<Upgrades::ItemPickerShop>(m_currentShop);
 		if (m_itemShop is null)
-			PrintError("\"" + id + "\" is not a dungeon shop!");
+			PrintError("\"" + id + "\" is not a itempicker shop!");
 	}
 
 	string GetGuiFilename() override
