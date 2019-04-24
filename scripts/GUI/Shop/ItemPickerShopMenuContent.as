@@ -94,7 +94,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 	{
 		auto wNewItem = UpgradeShopMenuContent::AddItem(template, list, upgrade);
 
-		auto itemUpgrade = cast<Upgrades::ItemUpgrade>(upgrade);
+		auto itemUpgrade = cast<Upgrades::ItemPickerItemUpgrade>(upgrade);
 		if (itemUpgrade !is null)
 		{
 			auto wIconContainer = cast<RectWidget>(wNewItem.GetWidgetById("icon-container"));

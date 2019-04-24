@@ -9,6 +9,12 @@
     			<string>Item</string><string>ItemPickerItem</string>
 			</array>
 		</array>
+		<array name="scripts">
+			<array>
+				<string>ItemUpgrade</string><string>ItemPickerItemUpgrade</string>
+				<string>ItemUpgradeStep</string><string>ItemPickerItemUpgradeStep</string>
+			</array>
+		</array>
 	</dict>
 </dict>
 
