@@ -63,7 +63,6 @@ namespace Upgrades
 
             	if(shopLevel == 2){
 	                if(item.quality == ActorItemQuality::Uncommon){
-	                	print(record.items.find(item.id));
 	                	if(record.items.find(item.id) == -1 && item.id != "item-picker-uncommon"){
 		        	    	AddUpgradeToBuilder(item.quality, record);	        	        
 		                }
