@@ -96,21 +96,21 @@ namespace Upgrades
         	}
 
         	// Let's see if there are dupes in my item picker
-        	for(uint i = 0; i < m_upgrades.length(); i++){
-        		int z = 0;
-        		auto upgrad = cast<ItemPickerItemUpgrade>(m_upgrades[i]);
-        		for(uint k = 0; k < m_upgrades.length(); k++){
-        			auto upgradzwei =  cast<ItemPickerItemUpgrade>(m_upgrades[k]);
-        			if(upgrad.m_item.name == upgradzwei.m_item.name){
-        				z += 1;
-        				if(z == 2){
-        					print(m_upgrades[i].m_id +" :" + upgrad.m_item.name + " is duplicate");
-        				}
-        			}
-        		}
-        	}
+        	// for(uint i = 0; i < m_upgrades.length(); i++){
+        	// 	int z = 0;
+        	// 	auto upgrad = cast<ItemPickerItemUpgrade>(m_upgrades[i]);
+        	// 	for(uint k = 0; k < m_upgrades.length(); k++){
+        	// 		auto upgradzwei =  cast<ItemPickerItemUpgrade>(m_upgrades[k]);
+        	// 		if(upgrad.m_item.name == upgradzwei.m_item.name){
+        	// 			z += 1;
+        	// 			if(z == 2){
+        	// 				print(m_upgrades[i].m_id +" :" + upgrad.m_item.name + " is duplicate");
+        	// 			}
+        	// 		}
+        	// 	}
+        	// }
         	
-        	print(m_upgrades.length());
+        	// print(m_upgrades.length());
 		}
 	}
 }
