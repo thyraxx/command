@@ -45,13 +45,13 @@ void GiveItemImpl(ActorItem@ item)
 	auto gm = cast<Campaign>(g_gameMode);
 
 	if (item.quality == ActorItemQuality::Common)
-		gm.m_shopMenu.Show(ItemPickerShopMenuContent(gm.m_shopMenu), 1);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 1);
 	else if (item.quality == ActorItemQuality::Uncommon)
-		gm.m_shopMenu.Show(ItemPickerShopMenuContent(gm.m_shopMenu), 2);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 2);
 	else if (item.quality == ActorItemQuality::Rare)
-		gm.m_shopMenu.Show(ItemPickerShopMenuContent(gm.m_shopMenu), 3);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 3);
 	else if (item.quality == ActorItemQuality::Epic)
-		gm.m_shopMenu.Show(ItemPickerShopMenuContent(gm.m_shopMenu), 4);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 4);
 	else if (item.quality == ActorItemQuality::Legendary)
-		gm.m_shopMenu.Show(ItemPickerShopMenuContent(gm.m_shopMenu), 5);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 5);
 }

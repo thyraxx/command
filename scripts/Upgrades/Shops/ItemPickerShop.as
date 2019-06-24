@@ -52,6 +52,7 @@ namespace Upgrades
 				if (item.dlc == "pop" && !g_owns_dlc_pop)
 					continue;
 
+
             	if(shopLevel == 1){
                 	if(item.quality == ActorItemQuality::Common){
                 		if(record.items.find(item.id) == -1 && item.id != "item-picker-common"){
@@ -62,6 +63,7 @@ namespace Upgrades
 
             	if(shopLevel == 2){
 	                if(item.quality == ActorItemQuality::Uncommon){
+	                	print(record.items.find(item.id));
 	                	if(record.items.find(item.id) == -1 && item.id != "item-picker-uncommon"){
 		        	    	AddUpgradeToBuilder(item.quality, record);	        	        
 		                }
@@ -102,13 +104,13 @@ namespace Upgrades
         			if(upgrad.m_item.name == upgradzwei.m_item.name){
         				z += 1;
         				if(z == 2){
-        					print(upgrad.m_item.name + " is duplicate");
+        					print(m_upgrades[i].m_id +" :" + upgrad.m_item.name + " is duplicate");
         				}
         			}
         		}
         	}
         	
-        	// print(m_upgrades.length());
+        	print(m_upgrades.length());
 		}
 	}
 }

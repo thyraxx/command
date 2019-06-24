@@ -129,4 +129,25 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 		}
 		return wNewItem;
 	}
+
+	// void OnFunc(Widget@ sender, string name) override
+	// {
+	// 	auto parse = name.split(" ");
+	// 	if (parse[0] == "buy-item")
+	// 	{
+	// 		auto btn = cast<UpgradeShopButtonWidget>(sender);
+	// 		if (btn !is null)
+	// 		{
+	// 			if (BuyItem(btn.m_upgrade, btn.m_upgradeStep))
+	// 				ReloadList();
+	// 		}
+	// 	}
+	// 	else if (name == "filterlist")
+	// 		m_wFilterBuyList.SetFilter(m_wFilter.m_text.plain());
+	// 	else if (name == "filterlist-clear")
+	// 	{
+	// 		m_wFilter.ClearText();
+	// 		m_wFilterBuyList.ShowAll();
+	// 	}
+	// }
 }
