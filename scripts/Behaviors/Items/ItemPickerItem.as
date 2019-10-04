@@ -1,57 +1,41 @@
 class ItemPickerItem : Item
 {
-
 	ItemPickerItem(UnitPtr unit, SValue& params)
 	{
 		params.GetDictionary().set("specific", true);
 
 		super(unit, params);
 
-		m_unit = unit;
 		auto quality = ParseActorItemQuality(GetParamString(unit, params, "quality", false, "common"));
 
-		bool specific = GetParamBool(unit, params, "specific", false, false);
-		
-		if(quality == 1){
-			Initialize(g_items.GetItem("item-picker-common"));
+		string itemName = "item-picker-common";
+		switch (quality)
+		{
+			case ActorItemQuality::Common: itemName = "item-picker-common"; break;
+			case ActorItemQuality::Uncommon: itemName = "item-picker-uncommon"; break;
+			case ActorItemQuality::Rare: itemName = "item-picker-rare"; break;
+			case ActorItemQuality::Epic: itemName = "item-picker-epic"; break;
+			case ActorItemQuality::Legendary: itemName = "item-picker-legendary"; break;
 		}
 
-		if(quality == 2){
-			Initialize(g_items.GetItem("item-picker-uncommon"));
-		}
-
-		if(quality == 3){
-			Initialize(g_items.GetItem("item-picker-rare"));
-		}
-
-		if(quality == 4){
-			Initialize(g_items.GetItem("item-picker-epic"));
-		}
-
-		if(quality == 5){
-			Initialize(g_items.GetItem("item-picker-legendary"));
-		}
+		Initialize(g_items.GetItem(itemName));
 	}
-	
+
 	void Use(PlayerBase@ player) override
 	{
 		m_unit.Destroy();
-		GiveItemImpl(m_item);
+
+		int level = 1;
+		switch (m_item.quality)
+		{
+			case ActorItemQuality::Common: level = 1; break;
+			case ActorItemQuality::Uncommon: level = 2; break;
+			case ActorItemQuality::Rare: level = 3; break;
+			case ActorItemQuality::Epic: level = 4; break;
+			case ActorItemQuality::Legendary: level = 5; break;
+		}
+
+		auto gm = cast<Campaign>(g_gameMode);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), level);
 	}
-}
-
-void GiveItemImpl(ActorItem@ item)
-{
-	auto gm = cast<Campaign>(g_gameMode);
-
-	if (item.quality == ActorItemQuality::Common)
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 1);
-	else if (item.quality == ActorItemQuality::Uncommon)
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 2);
-	else if (item.quality == ActorItemQuality::Rare)
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 3);
-	else if (item.quality == ActorItemQuality::Epic)
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 4);
-	else if (item.quality == ActorItemQuality::Legendary)
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), 5);
 }
