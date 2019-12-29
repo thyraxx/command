@@ -106,10 +106,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 			if (wIconContainer !is null && itemUpgrade.m_item.quality != ActorItemQuality::Common)
 			{
 				vec4 qualityColor = GetItemQualityColor(itemUpgrade.m_item.quality);
-				ColorHSV hsv(qualityColor);
-				hsv.m_saturation *= 0.5f;
-				hsv.m_value *= 0.35f;
-				wIconContainer.m_color = tocolor(hsv.ToColorRGBA());
+				wIconContainer.m_color = desaturate(qualityColor);
 			}
 
 			auto wIcon = cast<UpgradeIconWidget>(wNewItem.GetWidgetById("icon"));
