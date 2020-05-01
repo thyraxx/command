@@ -50,9 +50,10 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 
 		auto record = GetLocalPlayerRecord();
 
-		for(uint i = 0; i < record.generalStoreItems.length(); i++){
-			print(g_items.GetItem(record.generalStoreItems[i]).id);
-		}
+		// Some debugging stuff
+		//for(uint i = 0; i < record.generalStoreItems.length(); i++){
+		//	print(g_items.GetItem(record.generalStoreItems[i]).id);
+		//}
 
 		m_currentShop.OnOpenMenu(m_shopMenu.m_currentShopLevel, record);
 
