@@ -49,7 +49,7 @@ namespace Upgrades
 				if (item.blockedFlag != "" && g_flags.IsSet(item.blockedFlag))
 					continue;
 
-				if (item.dlc == "pop" && !g_owns_dlc_pop)
+				if (!HasDLC(item.dlc))
 					continue;
 
 				ActorItemQuality quality = ActorItemQuality::Common;
