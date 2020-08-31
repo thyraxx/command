@@ -16,7 +16,19 @@
 	</sprites>
 
 	<doc>
-		<group width="278" inner="true">
+		<group width="278" height="164" inner="true">
+
+			<!-- Filter -->
+			<rect width="278" height="14" color="#202a26FF" shadow="#0c120fFF" shadowsize="2" flow="hbox">
+				<!-- Text input -->
+				<textinput id="filter" offset="2 0" textoffset="1 0" width="259" height="14" font="gui/fonts/arial11.fnt" func-edit="filterlist" />
+
+				<!-- Separator -->
+				<rect width="3" height="14" spriteset="gui/variable/3pxbar_vert.sval" />
+
+				<!-- Button -->
+				<spritebutton func="filterlist-clear" spriteset="search-clear" />
+			</rect>
 
 			<!-- Small buy template (horizontal buttons) -->
 			<upgradeshopitem id="buy-template-small" func="buy-item" spriteset="scalebutton-big" icon="icon-pedestal" width="270" visible="false" />
@@ -40,7 +52,7 @@
 			</rect>
 
 			<!-- List -->
-			<scrollrect id="buy-list" flow="vbox" width="270" height="150" color="#202a26FF" shadow="#0c120fFF" shadowsize="2" />
+			<scrollrect offset="0 14" id="buy-list" flow="vbox" width="270" height="150" color="#202a26FF" shadow="#0c120fFF" shadowsize="2" />
 
 			<!-- Scrollbar -->
 			<scrollbar forid="buy-list" spriteset="scrollbar" outside="true" buttons-size="14" trough-offset="18" handle-border="2" />
