@@ -85,7 +85,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 				@btn = AddItem(m_wItemTemplate, m_wList, upgrade);
 			}
 
-			btn.m_filter = (itemUpgrade.m_item.name).toLower();
+			btn.m_filter = (Resources::GetString(itemUpgrade.m_item.name)).toLower();
 
 			if (btn.m_visible)
 				numItems++;
@@ -162,7 +162,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 					ReloadList();
 			}
 		}
-		else if (parse[0] == "filterlist" && parse[0] != "")
+		else if (parse[0] == "filterlist" )
 			m_wList.SetFilter(m_wFilter.m_text.plain());
 		else if (parse[0] == "filterlist-clear")
 		{
