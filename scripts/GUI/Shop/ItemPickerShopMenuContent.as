@@ -3,6 +3,9 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 
 	Widget@ m_wTemplate;
 	Upgrades::ItemPickerShop@ m_itemShop;
+	
+	FilteredListWidget@ m_wList;
+	TextInputWidget@ m_wFilter;
 
 	ItemPickerShopMenuContent(ShopMenu@ shopMenu, string id = "itempickershop")
 	{
@@ -27,19 +30,23 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 	{
 		@m_wItemTemplate = m_widget.GetWidgetById("buy-template");
 		@m_wItemTemplateSmall = m_widget.GetWidgetById("buy-template-small");
-		@m_wItemList = m_widget.GetWidgetById("buy-list");
+
 		@m_wItemListSmallContainer = m_widget.GetWidgetById("small-buy-list-container");
 		@m_wItemListSmall = m_widget.GetWidgetById("small-buy-list");
 
 		@m_wSoldOut = m_widget.GetWidgetById("sold-out");
+
+		// Changed to filterlist
+		@m_wList = cast<FilteredListWidget>(m_widget.GetWidgetById("buy-list"));
+		@m_wFilter = cast<TextInputWidget>(m_widget.GetWidgetById("filter"));
 
 		ReloadList();
 	}
 
 	void ReloadList() override
 	{
-		ClearList(m_wItemList);
-		ClearList(m_wItemListSmall);
+		ClearList(m_wList);
+		//ClearList(m_wItemListSmall);
 
 		m_shopMenu.CloseTooltip();
 
@@ -59,18 +66,26 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 
 		int numItems = 0;
 		for (auto iter = m_currentShop.Iterate(m_shopMenu.m_currentShopLevel, record); !iter.AtEnd(); iter.Next())
-		// for(uint i = 0; i < items.length(); i++)
 		{
 			Widget@ btn = null;
 
 			auto upgrade = iter.Current();
+			
+			// Cast to upgrade so we can actually retrieve the real name instead of
+			// item-1, item-2, item-3, etc.
+			auto itemUpgrade = cast<Upgrades::ItemPickerItemUpgrade>(upgrade);
+
 			if (upgrade.m_small)
 			{
 				@btn = AddItem(m_wItemTemplateSmall, m_wItemListSmall, upgrade);
 				m_wItemListSmallContainer.m_visible = true;
 			}
 			else
-				@btn = AddItem(m_wItemTemplate, m_wItemList, upgrade);
+			{
+				@btn = AddItem(m_wItemTemplate, m_wList, upgrade);
+			}
+
+			btn.m_filter = (Resources::GetString(itemUpgrade.m_item.name)).toLower();
 
 			if (btn.m_visible)
 				numItems++;
@@ -131,5 +146,33 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 			}
 		}
 		return wNewItem;
+	}
+
+	void OnFunc(Widget@ sender, string name) override
+	{
+		auto parse = name.split(" ");
+		print(parse[0]);
+
+		if (parse[0] == "buy-item")
+		{
+			auto btn = cast<UpgradeShopButtonWidget>(sender);
+			if (btn !is null)
+			{
+				if (BuyItem(btn.m_upgrade, btn.m_upgradeStep))
+					ReloadList();
+			}
+		}
+		else if (parse[0] == "filterlist" )
+			m_wList.SetFilter(m_wFilter.m_text.plain());
+		else if (parse[0] == "filterlist-clear")
+		{
+			m_wFilter.ClearText();
+			m_wList.ShowAll();
+		}
+		else
+		{
+			m_wFilter.ClearText();
+			m_wList.ShowAll();
+		}
 	}
 }
