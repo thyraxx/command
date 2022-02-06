@@ -11,7 +11,7 @@ namespace ItemPicker
 
 		// Fix for item not having a cost.
 		// If an item doesn't have a cost it won't be added to the list :/
-		for(int i = 0; i < g_items.m_allItemsList.length(); i++)
+		for(uint i = 0; i < g_items.m_allItemsList.length(); i++)
 		{
 			if(g_items.m_allItemsList[i].cost == 0)
 			{
