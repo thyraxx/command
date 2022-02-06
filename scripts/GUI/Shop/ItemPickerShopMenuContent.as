@@ -151,7 +151,7 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 	void OnFunc(Widget@ sender, string name) override
 	{
 		auto parse = name.split(" ");
-		print(parse[0]);
+		//print(parse[0]);
 
 		if (parse[0] == "buy-item")
 		{
