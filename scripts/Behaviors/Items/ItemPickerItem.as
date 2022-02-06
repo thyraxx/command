@@ -23,7 +23,6 @@ class ItemPickerItem : Item
 
 	void Use(PlayerBase@ player) override
 	{
-		m_unit.Destroy();
 
 		int level = 1;
 		switch (m_item.quality)
@@ -36,6 +35,6 @@ class ItemPickerItem : Item
 		}
 
 		auto gm = cast<Campaign>(g_gameMode);
-		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu), level);
+		gm.m_shopMenu.Show(gm.m_shopMenu.m_shopArea, ItemPickerShopMenuContent(gm.m_shopMenu, m_unit, "itempickershop"), level);
 	}
 }

@@ -6,14 +6,17 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 	
 	FilteredListWidget@ m_wList;
 	TextInputWidget@ m_wFilter;
+	UnitPtr m_unit;
 
-	ItemPickerShopMenuContent(ShopMenu@ shopMenu, string id = "itempickershop")
+	ItemPickerShopMenuContent(ShopMenu@ shopMenu, UnitPtr unit, string id = "itempickershop")
 	{
 		super(shopMenu, id);
 
 		@m_itemShop = cast<Upgrades::ItemPickerShop>(m_currentShop);
 		if (m_itemShop is null)
 			PrintError("\"" + id + "\" is not a itempicker shop!");
+
+		m_unit = unit;
 	}
 
 	string GetGuiFilename() override
@@ -159,7 +162,10 @@ class ItemPickerShopMenuContent : UpgradeShopMenuContent
 			if (btn !is null)
 			{
 				if (BuyItem(btn.m_upgrade, btn.m_upgradeStep))
+				{
 					ReloadList();
+					m_unit.Destroy();
+				}
 			}
 		}
 		else if (parse[0] == "filterlist" )
